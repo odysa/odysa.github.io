@@ -1,0 +1,19 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "My blog",
+  "main": "index.js",
+  "authors": {
+    "name": "odysa",
+    "email": "piensengxv@gmail.com"
+  },
+  "repository": "/blog",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
