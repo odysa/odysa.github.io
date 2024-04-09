@@ -47,3 +47,48 @@ initializeTheme();
 
 // Listen for changes in system preference
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initializeTheme);
+
+const renderPullRequestList = (pullRequests, username) => {
+    const pullRequestListElement = document.getElementById('pull-request-list');
+
+    if (pullRequests.length === 0) {
+        pullRequestListElement.innerHTML = `<h2>No pull requests found for user ${username}.</h2>`;
+        return;
+    }
+
+    let html = `<h2>Latest 10 pull requests for user ${username}:</h2>`;
+
+    pullRequests.forEach((pr, index) => {
+        html += `
+    <div class="pull-request">
+      <h3>${index + 1}. ${pr.title}</h3>
+      <p>URL: <a href="${pr.html_url}" target="_blank">${pr.html_url}</a></p>
+      <p>Created at: ${pr.created_at}</p>
+      <p>Status: ${pr.state}</p>
+      <hr>
+    </div>
+  `;
+    });
+
+    pullRequestListElement.innerHTML = html;
+};
+const fetchPullRequests = async (username) => {
+    const apiUrl = `https://api.github.com/search/issues?q=author:${username}+type:pr&sort=created&order=desc&per_page=5`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data.items || [];
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+const username = 'odysa';
+fetchPullRequests(username)
+    .then((pullRequests) => {
+        renderPullRequestList(pullRequests, username);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });

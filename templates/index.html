@@ -3,6 +3,10 @@
 {% block content %}
 {{ section.content | safe }}
 
+<div id="pull-request-list"></div>
+
+
+
 {% if config.extra.list_pages %}
 
 {% if paginator %}
@@ -12,17 +16,20 @@
 {% endif %}
 
 <ul class="titleList">
-{% for page in pages %}
-  <li>
-    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
-    <br />
-    {{ page.description }}
-  </li>
-{% endfor %}
+    {% for page in pages %}
+    <li>
+        <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+        <br />
+        {{ page.description }}
+    </li>
+    {% endfor %}
 </ul>
 
 {% if paginator %}
-<div class="metaData">{% if paginator.previous %}<a href="{{ paginator.first }}">⥶</a> &nbsp <a href="{{ paginator.previous }}"><</a>{% endif %} &nbsp {{ paginator.current_index }} / {{ paginator.number_pagers }} &nbsp {% if paginator.next %}<a href="{{ paginator.next }}">></a> &nbsp <a href="{{ paginator.last }}">⥸</a>{% endif %}</div>
+<div class="metaData">{% if paginator.previous %}<a href="{{ paginator.first }}">⥶</a> &nbsp <a
+        href="{{ paginator.previous }}">
+        << /a>{% endif %} &nbsp {{ paginator.current_index }} / {{ paginator.number_pagers }} &nbsp {% if paginator.next
+            %}<a href="{{ paginator.next }}">></a> &nbsp <a href="{{ paginator.last }}">⥸</a>{% endif %}</div>
 {% endif %}
 
 {% endif %}
