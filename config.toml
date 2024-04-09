@@ -1,6 +1,8 @@
 # The URL the site will be built for
 base_url = "https://odysa.github.io"
 
+theme = "anemone"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
@@ -14,3 +16,7 @@ highlight_code = true
 
 [extra]
 # Put all your custom variables here
+default_theme = "light"
+# list_pages = true
+display_author = true
+header_nav = [{ url = "/", name_en = "/home/" }]
