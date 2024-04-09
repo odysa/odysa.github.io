@@ -36,7 +36,7 @@ toggleButton.addEventListener('change', toggleTheme);
 // Function to initialize the theme based on the stored preference
 const initializeTheme = () => {
     const storedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = !window.matchMedia('(prefers-color-scheme: light)').matches;
     const isDarkMode = storedTheme === 'dark' || (!storedTheme && prefersDark);
     toggleButton.checked = isDarkMode;
     updateTheme(isDarkMode);
@@ -46,4 +46,4 @@ const initializeTheme = () => {
 initializeTheme();
 
 // Listen for changes in system preference
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', initializeTheme);
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', initializeTheme);
