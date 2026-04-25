@@ -65,7 +65,7 @@ export default defineConfig({
         cssVariable: "--font-sans",
         provider: fontProviders.google(),
         fallbacks: ["system-ui", "Arial", "sans-serif"],
-        weights: [400, 500, 600, 700],
+        weights: [400, 500, 600],
         styles: ["normal"],
       },
       {

@@ -39,7 +39,6 @@ html[data-theme="dark"] {
 @theme inline {
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-app: var(--font-sans);
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-foreground: var(--foreground);
@@ -64,11 +63,10 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-sans text-foreground selection:bg-accent/80 selection:text-surface;
+    @apply flex min-h-svh flex-col bg-background font-sans text-foreground selection:bg-accent/30;
     font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
   h1,
   h2,
