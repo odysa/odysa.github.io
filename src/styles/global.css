@@ -8,41 +8,31 @@
 html[data-theme="light"] {
   --background: #f5f4ed; /* Parchment */
   --surface: #faf9f5; /* Ivory */
-  --surface-elevated: #ffffff; /* Pure White (button surface only) */
   --foreground: #141413; /* Anthropic Near Black */
-  --foreground-soft: #3d3d3a; /* Dark Warm */
   --muted-foreground: #5e5d59; /* Olive Gray */
   --subtle-foreground: #87867f; /* Stone Gray */
-  --button-text: #4d4c48; /* Charcoal Warm */
   --accent: #c96442; /* Terracotta Brand */
   --accent-soft: #d97757; /* Coral Accent */
   --error: #b53333; /* Error Crimson */
   --focus: #3898ec; /* Focus Blue */
   --muted: #e8e6dc; /* Warm Sand */
-  --border: #f0eee6; /* Border Cream — standard */
-  --border-strong: #e8e6dc; /* Border Warm — prominent */
+  --border: #f0eee6; /* Border Cream */
   --ring: #d1cfc5; /* Ring Warm */
-  --ring-deep: #c2c0b6; /* Ring Deep */
 }
 
 html[data-theme="dark"] {
   --background: #141413; /* Anthropic Near Black */
   --surface: #30302e; /* Dark Surface */
-  --surface-elevated: #30302e;
   --foreground: #faf9f5; /* Ivory */
-  --foreground-soft: #b0aea5; /* Warm Silver */
   --muted-foreground: #b0aea5; /* Warm Silver */
   --subtle-foreground: #87867f; /* Stone Gray */
-  --button-text: #b0aea5;
   --accent: #d97757; /* Coral on dark */
-  --accent-soft: #c96442;
-  --error: #b53333;
-  --focus: #3898ec;
-  --muted: #30302e;
+  --accent-soft: #c96442; /* Terracotta */
+  --error: #b53333; /* Error Crimson */
+  --focus: #3898ec; /* Focus Blue */
+  --muted: #30302e; /* Dark Surface */
   --border: #30302e; /* Border Dark */
-  --border-strong: #3d3d3a;
-  --ring: #3d3d3a;
-  --ring-deep: #4d4c48;
+  --ring: #3d3d3a; /* Dark Warm */
 }
 
 @theme inline {
@@ -52,21 +42,16 @@ html[data-theme="dark"] {
   --font-app: var(--font-sans);
   --color-background: var(--background);
   --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
   --color-foreground: var(--foreground);
-  --color-foreground-soft: var(--foreground-soft);
   --color-muted-foreground: var(--muted-foreground);
   --color-subtle-foreground: var(--subtle-foreground);
-  --color-button-text: var(--button-text);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-error: var(--error);
   --color-focus: var(--focus);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
   --color-ring: var(--ring);
-  --color-ring-deep: var(--ring-deep);
 }
 
 @layer base {
@@ -79,7 +64,7 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/80 selection:text-[var(--surface)];
+    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/80 selection:text-surface;
     font-size: 17px;
     line-height: 1.6;
   }
@@ -129,9 +114,7 @@ html[data-theme="dark"] {
     outline: 2px solid var(--focus);
     outline-offset: 1px;
   }
-  small,
-  .text-label,
-  .text-caption {
+  small {
     letter-spacing: 0.12px;
   }
 }
@@ -144,13 +127,6 @@ html[data-theme="dark"] {
   @apply mx-auto w-full max-w-app px-4;
 }
 
-/* Ring-shadow elevation per spec */
-@utility shadow-ring {
-  box-shadow: 0 0 0 1px var(--ring);
-}
-@utility shadow-ring-deep {
-  box-shadow: 0 0 0 1px var(--ring-deep);
-}
 @utility shadow-whisper {
   box-shadow: rgba(0, 0, 0, 0.05) 0 4px 24px;
 }

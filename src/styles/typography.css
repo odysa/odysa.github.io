@@ -147,7 +147,7 @@
     }
     .line.diff.remove {
       @apply relative inline-block w-full;
-      background-color: rgba(181, 51, 51, 0.15); /* Error Crimson wash */
+      background-color: color-mix(in srgb, var(--error) 15%, transparent);
       &::before {
         @apply absolute -left-3 content-['-'];
         color: var(--error);
@@ -155,7 +155,7 @@
     }
     .line.highlighted {
       @apply inline-block w-full;
-      background-color: rgba(201, 100, 66, 0.1); /* Terracotta wash */
+      background-color: color-mix(in srgb, var(--accent) 10%, transparent);
     }
     .highlighted-word {
       @apply rounded-sm border border-border px-0.5 py-px;

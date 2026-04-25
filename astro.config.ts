@@ -65,7 +65,7 @@ export default defineConfig({
         cssVariable: "--font-serif",
         provider: fontProviders.google(),
         fallbacks: ["Georgia", "serif"],
-        weights: [400, 500, 600],
+        weights: [500],
         styles: ["normal", "italic"],
       },
       {
@@ -73,7 +73,7 @@ export default defineConfig({
         cssVariable: "--font-sans",
         provider: fontProviders.google(),
         fallbacks: ["system-ui", "Arial", "sans-serif"],
-        weights: [400, 500, 600, 700],
+        weights: [400, 500],
         styles: ["normal"],
       },
       {
@@ -81,7 +81,7 @@ export default defineConfig({
         cssVariable: "--font-mono",
         provider: fontProviders.google(),
         fallbacks: ["ui-monospace", "monospace"],
-        weights: [400, 500],
+        weights: [400],
         styles: ["normal"],
       },
     ],
