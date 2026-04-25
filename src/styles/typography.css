@@ -15,12 +15,12 @@
     --tw-prose-quote-borders: var(--accent);
     --tw-prose-captions: var(--subtle-foreground);
     --tw-prose-code: var(--foreground);
-    --tw-prose-hr: var(--border-soft);
+    --tw-prose-hr: var(--border);
     --tw-prose-th-borders: var(--border);
-    --tw-prose-td-borders: var(--border-soft);
+    --tw-prose-td-borders: var(--border);
 
     font-family: var(--font-sans);
-    line-height: 1.75;
+    line-height: 1.6;
 
     h1,
     h2,
@@ -70,11 +70,11 @@
     }
 
     hr {
-      @apply border-border-soft;
+      @apply border-border;
     }
 
     img {
-      @apply mx-auto rounded-2xl border border-border-soft;
+      @apply mx-auto rounded-2xl border border-border;
     }
 
     figcaption {
@@ -84,7 +84,7 @@
     table {
       th,
       td {
-        @apply border border-border-soft p-2;
+        @apply border border-border p-2;
       }
 
       th {
@@ -128,26 +128,37 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
-    @apply flex rounded-2xl border border-border-soft bg-(--shiki-light-bg) text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
+    @apply flex rounded-2xl border border-border bg-(--shiki-light-bg) text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
   }
 
   html[data-theme="dark"] .astro-code {
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
   }
 
-  /* Styles for Shiki transformers */
+  /* Styles for Shiki transformers — warm-tinted, no cool grays */
   .astro-code {
     .line.diff.add {
-      @apply relative inline-block w-full bg-green-400/20 before:absolute before:-left-3 before:text-green-500 before:content-['+'];
+      @apply relative inline-block w-full;
+      background-color: rgba(106, 137, 92, 0.15); /* muted green wash */
+      &::before {
+        @apply absolute -left-3 content-['+'];
+        color: #6a895c;
+      }
     }
     .line.diff.remove {
-      @apply relative inline-block w-full bg-red-500/20 before:absolute before:-left-3 before:text-red-500 before:content-['-'];
+      @apply relative inline-block w-full;
+      background-color: rgba(181, 51, 51, 0.15); /* Error Crimson wash */
+      &::before {
+        @apply absolute -left-3 content-['-'];
+        color: var(--error);
+      }
     }
     .line.highlighted {
-      @apply inline-block w-full bg-slate-400/20;
+      @apply inline-block w-full;
+      background-color: rgba(201, 100, 66, 0.1); /* Terracotta wash */
     }
     .highlighted-word {
-      @apply rounded-sm border border-border-soft px-0.5 py-px;
+      @apply rounded-sm border border-border px-0.5 py-px;
     }
   }
 }
