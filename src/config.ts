@@ -1,9 +1,9 @@
 export const SITE = {
   website: "https://odysa.github.io/",
-  author: "odysa",
+  author: "Chengxu Bian",
   profile: "https://github.com/odysa",
-  desc: "Personal blog of odysa.",
-  title: "odysa",
+  desc: "Personal blog of Chengxu Bian.",
+  title: "Chengxu Bian",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
