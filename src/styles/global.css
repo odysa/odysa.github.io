@@ -3,30 +3,54 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* Claude-inspired warm palette
+   Light surface = Parchment, dark surface = Anthropic Near Black.
+   Every neutral has a yellow-brown undertone — no cool grays. */
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: #f5f4ed; /* Parchment */
+  --surface: #faf9f5; /* Ivory */
+  --foreground: #141413; /* Anthropic Near Black */
+  --muted-foreground: #5e5d59; /* Olive Gray */
+  --subtle-foreground: #87867f; /* Stone Gray */
+  --accent: #c96442; /* Terracotta Brand */
+  --accent-soft: #d97757; /* Coral Accent */
+  --muted: #e8e6dc; /* Warm Sand */
+  --border: #e8e6dc; /* Border Warm */
+  --border-soft: #f0eee6; /* Border Cream */
+  --ring: #d1cfc5; /* Ring Warm */
 }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
+  --background: #141413; /* Anthropic Near Black */
+  --surface: #30302e; /* Dark Surface */
+  --foreground: #faf9f5; /* Ivory */
+  --muted-foreground: #b0aea5; /* Warm Silver */
+  --subtle-foreground: #87867f; /* Stone Gray */
+  --accent: #d97757; /* Coral Accent (lighter on dark) */
+  --accent-soft: #c96442; /* Terracotta Brand */
+  --muted: #30302e; /* Dark Surface */
+  --border: #30302e; /* Border Dark */
+  --border-soft: #3d3d3a; /* Dark Warm */
+  --ring: #3d3d3a;
 }
 
 @theme inline {
-  --font-app: var(--font-google-sans-code);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-app: var(--font-sans);
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+  --color-ring: var(--ring);
 }
 
 @layer base {
@@ -39,7 +63,38 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/75 selection:text-background;
+    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/80 selection:text-background;
+    font-feature-settings: "ss01", "cv01";
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--foreground);
+  }
+  h1 {
+    line-height: 1.1;
+  }
+  h2 {
+    line-height: 1.2;
+  }
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.3;
+  }
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: var(--font-mono);
   }
   a,
   button {
@@ -48,6 +103,9 @@ html[data-theme="dark"] {
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+  hr {
+    border-color: var(--border-soft);
   }
 }
 
@@ -60,11 +118,10 @@ html[data-theme="dark"] {
 }
 
 .active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-8;
+  @apply text-accent underline decoration-2 underline-offset-8;
+  text-decoration-style: solid;
 }
 
-/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 1rem;
 }

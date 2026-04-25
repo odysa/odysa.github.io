@@ -61,11 +61,16 @@ const structuredData = {
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Load Font -->
+    <!-- Load Fonts -->
     <Font
-      cssVariable="--font-google-sans-code"
+      cssVariable="--font-serif"
+      preload={[{ subset: "latin", weight: 500, style: "normal" }]}
+    />
+    <Font
+      cssVariable="--font-sans"
       preload={[{ subset: "latin", weight: 400, style: "normal" }]}
     />
+    <Font cssVariable="--font-mono" />
 
     <!-- General Meta Tags -->
     <title>{title}</title>
