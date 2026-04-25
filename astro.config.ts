@@ -61,19 +61,11 @@ export default defineConfig({
     preserveScriptOrder: true,
     fonts: [
       {
-        name: "Source Serif 4",
-        cssVariable: "--font-serif",
-        provider: fontProviders.google(),
-        fallbacks: ["Georgia", "serif"],
-        weights: [500],
-        styles: ["normal", "italic"],
-      },
-      {
         name: "Inter",
         cssVariable: "--font-sans",
         provider: fontProviders.google(),
         fallbacks: ["system-ui", "Arial", "sans-serif"],
-        weights: [400, 500],
+        weights: [400, 500, 600, 700],
         styles: ["normal"],
       },
       {

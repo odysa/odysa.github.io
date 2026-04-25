@@ -23,7 +23,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index" class="app-layout">
     <section id="hero" class:list={["pt-8 pb-6", "border-b border-border"]}>
-      <h1 class="my-4 inline-block text-5xl sm:my-8 sm:text-6xl">
+      <h1 class="my-4 inline-block text-4xl font-semibold tracking-tight sm:my-8 sm:text-5xl">
         Mingalaba
       </h1>
       <a
@@ -64,7 +64,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
             { "border-b border-border": recentPosts.length > 0 },
           ]}
         >
-          <h2 class="text-3xl">Featured</h2>
+          <h2 class="text-2xl font-semibold tracking-tight">Featured</h2>
           <ul>
             {featuredPosts.map(data => (
               <Card variant="h3" {...data} />
@@ -77,7 +77,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-3xl">Recent Posts</h2>
+          <h2 class="text-2xl font-semibold tracking-tight">Recent Posts</h2>
           <ul>
             {recentPosts.map(
               (data, index) =>

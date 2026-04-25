@@ -3,40 +3,40 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* Claude-inspired warm palette — every neutral has a yellow-brown undertone. */
+/* Anthropic engineering aesthetic: near-white background, sans-serif throughout,
+   warm-tinted neutrals, terracotta used only sparingly. */
 :root,
 html[data-theme="light"] {
-  --background: #f5f4ed; /* Parchment */
-  --surface: #faf9f5; /* Ivory */
+  --background: #fafaf7; /* Near-white, warm */
+  --surface: #ffffff; /* Pure white for cards / code blocks */
   --foreground: #141413; /* Anthropic Near Black */
   --muted-foreground: #5e5d59; /* Olive Gray */
   --subtle-foreground: #87867f; /* Stone Gray */
-  --accent: #c96442; /* Terracotta Brand */
-  --accent-soft: #d97757; /* Coral Accent */
-  --error: #b53333; /* Error Crimson */
-  --focus: #3898ec; /* Focus Blue */
-  --muted: #e8e6dc; /* Warm Sand */
-  --border: #f0eee6; /* Border Cream */
-  --ring: #d1cfc5; /* Ring Warm */
+  --accent: #c96442; /* Terracotta — rare accent only */
+  --accent-soft: #d97757;
+  --error: #b53333;
+  --focus: #3898ec;
+  --muted: #f0eee6; /* Warm subtle fill (e.g. inline code bg) */
+  --border: #e8e6dc; /* Warm border */
+  --ring: #d1cfc5;
 }
 
 html[data-theme="dark"] {
-  --background: #141413; /* Anthropic Near Black */
-  --surface: #30302e; /* Dark Surface */
-  --foreground: #faf9f5; /* Ivory */
-  --muted-foreground: #b0aea5; /* Warm Silver */
-  --subtle-foreground: #87867f; /* Stone Gray */
-  --accent: #d97757; /* Coral on dark */
-  --accent-soft: #c96442; /* Terracotta */
-  --error: #b53333; /* Error Crimson */
-  --focus: #3898ec; /* Focus Blue */
-  --muted: #30302e; /* Dark Surface */
-  --border: #30302e; /* Border Dark */
-  --ring: #3d3d3a; /* Dark Warm */
+  --background: #141413;
+  --surface: #1d1d1b;
+  --foreground: #faf9f5;
+  --muted-foreground: #b0aea5;
+  --subtle-foreground: #87867f;
+  --accent: #d97757;
+  --accent-soft: #c96442;
+  --error: #b53333;
+  --focus: #3898ec;
+  --muted: #30302e;
+  --border: #30302e;
+  --ring: #3d3d3a;
 }
 
 @theme inline {
-  --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-app: var(--font-sans);
@@ -64,9 +64,11 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/80 selection:text-surface;
+    @apply flex min-h-svh flex-col bg-background font-sans text-foreground selection:bg-accent/80 selection:text-surface;
     font-size: 17px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   h1,
   h2,
@@ -74,16 +76,18 @@ html[data-theme="dark"] {
   h4,
   h5,
   h6 {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    letter-spacing: 0;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--foreground);
   }
   h1 {
     line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   h2 {
     line-height: 1.2;
+    letter-spacing: -0.015em;
   }
   h3,
   h4,
@@ -114,9 +118,6 @@ html[data-theme="dark"] {
     outline: 2px solid var(--focus);
     outline-offset: 1px;
   }
-  small {
-    letter-spacing: 0.12px;
-  }
 }
 
 @utility max-w-app {
@@ -127,14 +128,10 @@ html[data-theme="dark"] {
   @apply mx-auto w-full max-w-app px-4;
 }
 
-@utility shadow-whisper {
-  box-shadow: rgba(0, 0, 0, 0.05) 0 4px 24px;
-}
-
 .active-nav {
   @apply text-foreground;
   text-decoration: underline solid var(--accent) 2px;
-  text-underline-offset: 8px;
+  text-underline-offset: 6px;
 }
 
 :target {
