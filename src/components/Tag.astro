@@ -16,7 +16,7 @@ const { tag, tagName, size = "lg" } = Astro.props;
     transition:name={tag}
     class:list={[
       "inline-flex items-center gap-1 rounded",
-      "border border-border bg-surface px-2 py-0.5 text-muted-foreground",
+      "border border-border px-2 py-0.5 text-muted-foreground",
       "transition-colors hover:border-foreground hover:text-foreground",
       "focus-visible:border-foreground focus-visible:text-foreground",
       { "text-xs": size === "sm" },
